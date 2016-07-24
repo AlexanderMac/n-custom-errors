@@ -1,0 +1,31 @@
+{
+  "name": "n-custom-errors",
+  "version": "0.0.1",
+  "description": "Custom errors for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "lint": "jshint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderMac/n-custom-errors.git"
+  },
+  "keywords": [
+    "custom",
+    "error",
+    "errors"
+  ],
+  "author": "AlexanderMac",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexanderMac/n-custom-errors/issues"
+  },
+  "homepage": "https://github.com/AlexanderMac/n-custom-errors#readme",
+  "dependencies": {
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.2"
+  }
+}
