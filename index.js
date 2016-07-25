@@ -4,34 +4,11 @@ var _ = require('lodash');
 
 var _customErrors = [];
 
-exports.registerError = (name, errorCode) => {
-  if (!name) {
-    throw new Error('Custom error name is required');
-  }
-  if (_.some(_customErrors, { name })) {
-    throw new Error(`Custom error ${name} is already registered`);
-  }
-
+exports.registerError = (name, statusCode, messageTemplate) => {
+  _validate(name);
   name = _.upperFirst(name);
-
-  var CustomError = function(msg, info) {
-    this.message = msg;
-    this.info = info;
-    this.errorCode = errorCode;
-    this.name = name;
-  };
-  CustomError.prototype = new Error();
-
-  exports[`is${name}Error`] = (err) => {
-    return err instanceof CustomError;
-  };
-  exports[`get${name}Error`] = (msg, info) => {
-    return new CustomError(msg, info);
-  };
-  exports[`rejectWith${name}Error`] = (msg, info) => {
-    var err = exports[`get${name}Error`](msg, info);
-    return Promise.reject(err);
-  };
+  var CustomError = _createCustomError(name, statusCode);
+  _createFunctions(name, CustomError, messageTemplate);
 
   _customErrors.push({
     name,
@@ -42,3 +19,45 @@ exports.registerError = (name, errorCode) => {
 exports.isKnownError = (err) => {
   return _.some(_customErrors, custErr => err instanceof custErr.type);
 };
+
+function _validate(name) {
+  if (!name) {
+    throw new Error('Custom error name is required');
+  }
+  if (_.some(_customErrors, { name })) {
+    throw new Error(`Custom error ${name} is already registered`);
+  }
+}
+
+function _createCustomError(name, statusCode) {
+  var CustomError = function(msg) {
+    this.name = name + 'Error';
+    this.message = msg;
+    this.statusCode = statusCode;
+  };
+  CustomError.prototype = new Error();
+
+  return CustomError;
+}
+
+function _createFunctions(name, CustomError, messageTemplate) {
+  exports[`is${name}Error`] = function(err) {
+    return err instanceof CustomError;
+  };
+
+  exports[`get${name}Error`] = function(msg) {
+    if (messageTemplate && !_.isString(msg) && _.isObject(msg)) {
+      var msgParams = msg;
+      msg = _.reduce(msgParams, (result, paramVal, paramKey) => {
+        result = _.replace(result, '${' + paramKey + '}', paramVal);
+        return result;
+      }, messageTemplate);
+    }
+    return new CustomError(msg);
+  };
+
+  exports[`rejectWith${name}Error`] = function(msg) {
+    var err = exports[`get${name}Error`](msg);
+    return Promise.reject(err);
+  };
+}
