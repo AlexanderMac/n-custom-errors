@@ -17,7 +17,7 @@ exports.registerError = (name, statusCode, messageTemplate) => {
 };
 
 exports.isKnownError = (err) => {
-  return _.some(_customErrors, custErr => err instanceof custErr.type);
+  return _.some(_customErrors, custErr => err instanceof custErr.type || err === custErr.name);
 };
 
 function _validate(name) {
