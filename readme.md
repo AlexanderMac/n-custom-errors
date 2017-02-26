@@ -94,3 +94,11 @@ Returns `true` if `err` is a registered custom error, `false` otherwise.
 **This function is automatically added when a new custom error is registered**. Returns `true` if `err` is a custom error, `false` otherwise.
 
 - `err` - error object, **required**.
+
+
+### Author
+Alexander Mac
+
+
+### Licence
+Licensed under the MIT license.

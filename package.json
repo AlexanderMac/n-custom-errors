@@ -4,7 +4,6 @@
   "description": "Custom errors for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
     "lint": "jshint index.js"
   },
   "repository": {
