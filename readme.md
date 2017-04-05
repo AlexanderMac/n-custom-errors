@@ -2,21 +2,18 @@
 Custom errors for Node.js.
 
 ### Features
-- register custom errors
-- template string for formatting error message
-- a few helpers functions for each registered error:
+- possibility to register custom errors with name, code and error message.
+- template string for formatting error message.
+- a few helper functions for each registered error:
   - `get<errorName>Error()`
   - `rejectWith<errorName>Error()`
   - `is<errorName>Error()`
 
-### Commands
+### Setting up
 
 ```sh
-# Install
+# Add to project
 $ npm i -S n-custom-errors
-
-# Run jshint
-$ npm run lint
 ```
 
 ### Usage
@@ -30,18 +27,21 @@ customErrors.registerError('ObjectNotFound', 404, '${objectName} is not found');
 // Creating custom errors:
 var objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
 var duplicateObjectError = customErrors.getDuplicateObjectError('The email is not unique');
+
+console.log(objectNotFoundError1);
 /*
-console.log(objectNotFoundError1), prints => {
+prints => {
   name: 'ObjectNotFoundError',
   message: 'user is not found',
   statusCode: 404
-}
-console.log(duplicateObjectError), prints => {
+}*/
+console.log(duplicateObjectError);
+/*
+prints => {
   name: 'DuplicateObjectError',
   message: 'The email is not unique',
   statusCode: 409
-}
-*/
+}*/
 
 // Checking that an error is a custom error:
 var err = new Error();
@@ -49,7 +49,7 @@ var objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'use
 customErrors.isObjectNotFoundError(err)); // returns false
 customErrors.isObjectNotFoundError(objectNotFoundError)); // returns true
 
-// Rejecting with custom errors (helpful in promises chain):
+// Rejecting with custom error (helpful in promises chain):
 usersSrvc
   .getUser(userId)
   .then(user => {
@@ -100,5 +100,5 @@ Returns `true` if `err` is a registered custom error, `false` otherwise.
 Alexander Mac
 
 
-### Licence
-Licensed under the MIT license.
+### License
+[MIT License](license.md)
