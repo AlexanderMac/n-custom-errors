@@ -1,6 +1,8 @@
 # n-custom-errors
 Custom errors for Node.js.
 
+[![Build Status](https://travis-ci.org/AlexanderMac/n-custom-errors.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-custom-errors)
+
 ### Features
 - possibility to register custom errors with name, code and error message.
 - template string for formatting error message.
