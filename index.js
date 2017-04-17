@@ -41,11 +41,11 @@ function _createCustomError(name, statusCode) {
 }
 
 function _createFunctions(name, CustomError, messageTemplate) {
-  exports[`is${name}Error`] = function(err) {
-    return err instanceof CustomError;
-  };
+  exports[`is${name}Error`] = (err) => err instanceof CustomError;
 
-  exports[`get${name}Error`] = function(msg) {
+  exports[`get${name}ErrorType`] = () => CustomError;
+
+  exports[`get${name}Error`] = (msg) => {
     if (messageTemplate && !_.isString(msg) && _.isObject(msg)) {
       var msgParams = msg;
       msg = _.reduce(msgParams, (result, paramVal, paramKey) => {
@@ -56,7 +56,7 @@ function _createFunctions(name, CustomError, messageTemplate) {
     return new CustomError(msg);
   };
 
-  exports[`rejectWith${name}Error`] = function(msg) {
+  exports[`rejectWith${name}Error`] = (msg) => {
     var err = exports[`get${name}Error`](msg);
     return Promise.reject(err);
   };
