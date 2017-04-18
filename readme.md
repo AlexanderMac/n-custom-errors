@@ -8,6 +8,7 @@ Custom errors for Node.js.
 - template string for formatting error message.
 - a few helper functions for each registered error:
   - `get<errorName>Error()`
+  - `get<errorName>ErrorType()`
   - `rejectWith<errorName>Error()`
   - `is<errorName>Error()`
 
@@ -21,7 +22,7 @@ $ npm i -S n-custom-errors
 ### Usage
 
 ```js
-// Register errors:
+// Registering errors:
 customErrors.registerError('AccessDenied', 403);
 customErrors.registerError('DuplicateObject', 409);
 customErrors.registerError('ObjectNotFound', 404, '${objectName} is not found');
@@ -77,26 +78,30 @@ Registers a new custom error.
   - `statusCode` - http status code for error.
   - `messageTemplate` - template for a message, must contains parameters in the following format: `${objectName} is not found`. To pass the parameters to the template, parameters must be an object with defined properties: `customErrors.getObjectNotFoundError({ objectName: 'user' })`. If parameters is a string, than this string will be used in an error message without template: `customErrors.getObjectNotFoundError('User with a name user1 is not found, please use another filter')`.
 
-- **isKnownError(err) **<br>
+- **isKnownError(err)**<br>
 Returns `true` if `err` is a registered custom error, `false` otherwise.
 
   - `err` - error object, **required**.
 
 - **get<errorName>Error(msg)**<br>
-*This function is added automatically when a new custom error is registered*. Creates a custom error with message `msg`, it can be the parameters object if an error is registered with `messageTemplate`.
+*This function is added automatically when a new custom error is registered*.<br>
+Creates a custom error with message `msg`, it can be the parameters object if an error is registered with `messageTemplate`.
 
   - `msg` - an error message, **required**.
 
 - **get<errorName>ErrorType()**<br>
-*This function is added automatically when a new custom error is registered*. Gets a custom error type.
+*This function is added automatically when a new custom error is registered*.<br>
+Gets a custom error type.
 
 - **rejectWith<errorName>Error(msg)**<br>
-*This function is added automatically when a new custom error is registered*. Rejects promise with a custom error and a message.
+*This function is added automatically when a new custom error is registered*.
+<br>Rejects promise with a custom error and a message.
 
   - `msg` - an error message, **required**.
 
 - **is<errorName>Error(err)**<br>
-*This function is added automatically when a new custom error is registered*. Returns `true` if `err` is a custom error, `false` otherwise.
+*This function is added automatically when a new custom error is registered*.
+<br>Returns `true` if `err` is a custom error, `false` otherwise.
 
   - `err` - error object, **required**.
 
