@@ -70,32 +70,35 @@ usersSrvc
 
 ### API
 
-#### registerError(name, statusCode, messageTemplate)
+- **registerError(name, statusCode, messageTemplate)**<br>
 Registers a new custom error.
 
-- `name` - error name, **required**, must be an unique. Name must be without `Error` postfix.
-- `statusCode` - http status code for error.
-- `messageTemplate` - template for a message, must contains parameters in the following format: `${objectName} is not found`. To pass the parameters to the template, parameters must be an object with defined properties: `customErrors.getObjectNotFoundError({ objectName: 'user' })`. If parameters is a string, than this string will be used in an error message without template: `customErrors.getObjectNotFoundError('User with a name user1 is not found, please use another filter')`.
+  - `name` - error name, **required**, must be an unique. Name must be without `Error` postfix.
+  - `statusCode` - http status code for error.
+  - `messageTemplate` - template for a message, must contains parameters in the following format: `${objectName} is not found`. To pass the parameters to the template, parameters must be an object with defined properties: `customErrors.getObjectNotFoundError({ objectName: 'user' })`. If parameters is a string, than this string will be used in an error message without template: `customErrors.getObjectNotFoundError('User with a name user1 is not found, please use another filter')`.
 
-#### isKnownError(err) 
+- **isKnownError(err) **<br>
 Returns `true` if `err` is a registered custom error, `false` otherwise.
 
-- `err` - error object, **required**.
+  - `err` - error object, **required**.
 
-#### get<errorName>Error(msg)
-**This function is automatically added when a new custom error is registered**. Creates a custom error with message `msg`, it can be the parameters object if an error is registered with `messageTemplate`.
+- **get<errorName>Error(msg)**<br>
+*This function is added automatically when a new custom error is registered*. Creates a custom error with message `msg`, it can be the parameters object if an error is registered with `messageTemplate`.
 
-- `msg` - an error message, **required**.
+  - `msg` - an error message, **required**.
 
-#### rejectWith<errorName>Error(msg)
-**This function is automatically added when a new custom error is registered**. Rejects promise with a custom error and a message.
+- **get<errorName>ErrorType()**<br>
+*This function is added automatically when a new custom error is registered*. Gets a custom error type.
 
-- `msg` - an error message, **required**.
+- **rejectWith<errorName>Error(msg)**<br>
+*This function is added automatically when a new custom error is registered*. Rejects promise with a custom error and a message.
 
-#### is<errorName>Error(err)
-**This function is automatically added when a new custom error is registered**. Returns `true` if `err` is a custom error, `false` otherwise.
+  - `msg` - an error message, **required**.
 
-- `err` - error object, **required**.
+- **is<errorName>Error(err)**<br>
+*This function is added automatically when a new custom error is registered*. Returns `true` if `err` is a custom error, `false` otherwise.
+
+  - `err` - error object, **required**.
 
 
 ### Author
