@@ -83,23 +83,23 @@ Returns `true` if `err` is a registered custom error, `false` otherwise.
 
   - `err` - error object, **required**.
 
-- **get<errorName>Error(msg)**<br>
+- **get\<errorName\>Error(msg)**<br>
 *This function is added automatically when a new custom error is registered*.<br>
 Creates a custom error with message `msg`, it can be the parameters object if an error is registered with `messageTemplate`.
 
   - `msg` - an error message, **required**.
 
-- **get<errorName>ErrorType()**<br>
+- **get\<errorName\>ErrorType()**<br>
 *This function is added automatically when a new custom error is registered*.<br>
 Gets a custom error type.
 
-- **rejectWith<errorName>Error(msg)**<br>
+- **rejectWith\<errorName\>Error(msg)**<br>
 *This function is added automatically when a new custom error is registered*.
 <br>Rejects promise with a custom error and a message.
 
   - `msg` - an error message, **required**.
 
-- **is<errorName>Error(err)**<br>
+- **is\<errorName\>Error(err)**<br>
 *This function is added automatically when a new custom error is registered*.
 <br>Returns `true` if `err` is a custom error, `false` otherwise.
 
