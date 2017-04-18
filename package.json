@@ -7,7 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "lint": "jshint index.js"
+    "test": "gulp lint && gulp test"
   },
   "repository": {
     "type": "git",
