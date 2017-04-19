@@ -2,6 +2,7 @@
 Custom errors for Node.js.
 
 [![Build Status](https://travis-ci.org/AlexanderMac/n-custom-errors.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-custom-errors)
+[![npm version](https://badge.fury.io/js/n-custom-errors.svg)](https://badge.fury.io/js/n-custom-errors)
 
 ### Features
 - possibility to register custom errors with name, code and error message.
