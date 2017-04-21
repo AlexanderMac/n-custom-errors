@@ -112,4 +112,4 @@ Alexander Mac
 
 
 ### License
-[MIT License](license.md)
+[MIT License](license)
