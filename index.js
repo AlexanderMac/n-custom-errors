@@ -1,5 +1,4 @@
 'use strict';
 
-let customErrors = require('./lib/custom-errors');
-
-module.exports = customErrors;
+module.exports = require('./lib/custom-errors');
+module.exports.predefinedErrors = require('./lib/predefined-errors');
