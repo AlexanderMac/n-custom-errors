@@ -1,8 +1,8 @@
 'use strict';
 
-var should       = require('should');
-var rewire       = require('rewire');
-var customErrors = rewire('../src/custom-errors');
+const should       = require('should');
+const rewire       = require('rewire');
+const customErrors = rewire('../src/custom-errors');
 
 should.config.checkProtoEql = false;
 
@@ -16,11 +16,11 @@ describe('errors', () => {
     function test1(name, code, template, expectedErrors) {
       customErrors.registerError(name, code, template);
 
-      const actualErrors = customErrors.__get__('_customErrors');
+      let actualErrors = customErrors.__get__('_customErrors');
       should(actualErrors).eql(expectedErrors);
 
-      const actualError = new (actualErrors[0].type)('Test');
-      const expectedError = new (expectedErrors[0].type)('Test');
+      let actualError = new (actualErrors[0].type)('Test');
+      let expectedError = new (expectedErrors[0].type)('Test');
       should(actualError).eql(expectedError);
     }
 
@@ -29,10 +29,10 @@ describe('errors', () => {
     }
 
     it('should register a new unique customError', () => {
-      const name = 'AccessDenied';
-      const code = 403;
-      const template = '${user} has\'t access to this data';
-      const expectedErrors = [{
+      let name = 'AccessDenied';
+      let code = 403;
+      let template = '${user} has\'t access to this data';
+      let expectedErrors = [{
         name,
         type: customErrors.__get__('_createCustomError')(name, code)
       }];
@@ -41,19 +41,19 @@ describe('errors', () => {
     });
 
     it('should throw an error if the name is not defined', () => {
-      const name = null;
-      const code = 403;
-      const template = '${user} has\'t access to this data';
-      const expectedErrorMessage = 'Custom error name is required';
+      let name = null;
+      let code = 403;
+      let template = '${user} has\'t access to this data';
+      let expectedErrorMessage = 'Custom error name is required';
 
       test2(name, code, template, expectedErrorMessage);
     });
 
     it('should throw an error if the customError is already registered', () => {
-      const name = 'AccessDenied';
-      const code = 403;
-      const template = '${user} has\'t access to this data';
-      const expectedErrorMessage = `Custom error ${name} is already registered`;
+      let name = 'AccessDenied';
+      let code = 403;
+      let template = '${user} has\'t access to this data';
+      let expectedErrorMessage = `Custom error ${name} is already registered`;
 
       customErrors.__set__('_customErrors', [{ name }]);
 
@@ -61,34 +61,34 @@ describe('errors', () => {
     });
   });
 
-  describe('isKnownError', function() {
+  describe('isKnownError', () => {
     beforeEach(() => {
       customErrors.registerError('AccessDenied', 403);
       customErrors.registerError('ObjectNotFound', 404);
     });
 
     function test(err, expected) {
-      const actual = customErrors.isKnownError(err);
+      let actual = customErrors.isKnownError(err);
       should(actual).eql(expected);
     }
 
     it('should return false when err isn\'t an instance of ObjectNotFoundError', () => {
-      const err = new Error('Test Error');
-      const expected = false;
+      let err = new Error('Test Error');
+      let expected = false;
 
       test(err, expected);
     });
 
-    it('should return true when err is an instance of ObjectNotFoundError', function() {
-      const err = customErrors.getObjectNotFoundError('Test Error');
-      const expected = true;
+    it('should return true when err is an instance of ObjectNotFoundError', () => {
+      let err = customErrors.getObjectNotFoundError('Test Error');
+      let expected = true;
 
       test(err, expected);
     });
 
-    it('should return true when err is a name of ObjectNotFoundError type', function() {
-      const err = 'ObjectNotFound';
-      const expected = true;
+    it('should return true when err is a name of ObjectNotFoundError type', () => {
+      let err = 'ObjectNotFound';
+      let expected = true;
 
       test(err, expected);
     });
@@ -96,9 +96,9 @@ describe('errors', () => {
 
   describe('Helpers', () => {
     beforeEach(() => {
-      const name = 'AccessDenied';
-      const code = 403;
-      const template = '${user} has\'t access to this data';
+      let name = 'AccessDenied';
+      let code = 403;
+      let template = '${user} has\'t access to this data';
 
       customErrors.registerError(name, code, template);
     });

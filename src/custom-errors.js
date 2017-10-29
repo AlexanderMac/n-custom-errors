@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 var _customErrors = [];
 
@@ -8,7 +8,7 @@ exports.registerError = (name, statusCode, messageTemplate) => {
   _validate(name);
 
   name = _.upperFirst(name);
-  var CustomError = _createCustomError(name, statusCode);
+  let CustomError = _createCustomError(name, statusCode);
 
   _createFunctions(name, CustomError, messageTemplate);
 
@@ -32,7 +32,7 @@ function _validate(name) {
 }
 
 function _createCustomError(name, statusCode) {
-  var CustomError = function(msg) {
+  let CustomError = function(msg) {
     this.name = name + 'Error';
     this.message = msg;
     this.statusCode = statusCode;
@@ -49,7 +49,7 @@ function _createFunctions(name, CustomError, messageTemplate) {
 
   exports[`get${name}Error`] = (msg) => {
     if (messageTemplate && !_.isString(msg) && _.isObject(msg)) {
-      var msgParams = msg;
+      let msgParams = msg;
       msg = _.reduce(msgParams, (result, paramVal, paramKey) => {
         result = _.replace(result, '${' + paramKey + '}', paramVal);
         return result;
@@ -59,7 +59,7 @@ function _createFunctions(name, CustomError, messageTemplate) {
   };
 
   exports[`rejectWith${name}Error`] = (msg) => {
-    var err = exports[`get${name}Error`](msg);
+    let err = exports[`get${name}Error`](msg);
     return Promise.reject(err);
   };
 }

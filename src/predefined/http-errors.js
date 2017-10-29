@@ -1,6 +1,6 @@
 'use strict';
 
-var customErrors = require('../custom-errors');
+const customErrors = require('../custom-errors');
 
 exports.register = () => {
   customErrors.registerError('AccessDenied', 403);
