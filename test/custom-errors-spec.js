@@ -2,10 +2,11 @@
 
 var should       = require('should');
 var rewire       = require('rewire');
-var customErrors = rewire('../lib/custom-errors');
+var customErrors = rewire('../src/custom-errors');
 
 should.config.checkProtoEql = false;
 
+/* eslint new-cap: off */
 describe('errors', () => {
   beforeEach(() => {
     customErrors.__set__('_customErrors', []);
