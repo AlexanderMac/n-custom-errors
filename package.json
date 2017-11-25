@@ -33,11 +33,11 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
+    "eslint": "^4.11.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
-    "nyc": "^11.1.0",
-    "should": "^11.2.1",
-    "rewire": "^2.5.2"
+    "nyc": "^11.3.0",
+    "rewire": "^2.5.2",
+    "should": "^11.2.1"
   }
 }
