@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 
-var _customErrors = [];
+let _customErrors = [];
 
 exports.registerError = (name, statusCode, messageTemplate) => {
   _validate(name);
@@ -58,6 +58,7 @@ function _createFunctions(name, CustomError, messageTemplate) {
     return new CustomError(msg);
   };
 
+  // TODO: deprecated
   exports[`rejectWith${name}Error`] = (msg) => {
     let err = exports[`get${name}Error`](msg);
     return Promise.reject(err);
