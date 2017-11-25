@@ -12,6 +12,15 @@ Custom errors for Node.js.
   - `get<errorName>ErrorType()`
   - `rejectWith<errorName>Error()`
   - `is<errorName>Error()`
+- predefined HTTP errors:
+  - `AccessDeniedError`
+  - `BusinessLogicError`
+  - `DbValidationError`
+  - `DuplicateObjectError`
+  - `ObjectNotFoundError`
+  - `ThirdPartyServiceError`
+  - `UnauthorizedRequestError`
+  - `UnprocessableRequestError`
 
 ### Setting up
 
@@ -59,20 +68,10 @@ let objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'use
 customErrors.isObjectNotFoundError(err)); // returns false
 customErrors.isObjectNotFoundError(objectNotFoundError)); // returns true
 
-// Rejecting with custom error (helpful in promises chain):
-usersSrvc
-  .getUser(userId)
-  .then(user => {
-    if (!user) {
-      return customErrors.rejectWithObjectNotFoundError('user'));
-    }
-    return user;
-  })
-  .catch(err => {
-    if (!customErrors.isObjectNotFoundError(err)) {
-      // do something if err is unexpected error
-    }
-  });
+// Using predefined HTTP errors
+const customErrors = require('n-custom-errors');
+
+customErrors.predefined.http.register();
 ```
 
 ### API
@@ -110,6 +109,9 @@ Gets a custom error type.
 <br>Returns `true` if `err` is a custom error, `false` otherwise.
 
   - `err` - error object, **required**.
+
+- **predefined.http.register()**<br>
+<br>Register predefined htpp errors.
 
 ### Author
 Alexander Mac
