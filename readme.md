@@ -5,9 +5,9 @@ Custom errors for Node.js.
 [![npm version](https://badge.fury.io/js/n-custom-errors.svg)](https://badge.fury.io/js/n-custom-errors)
 
 ### Features
-- possibility to register custom errors with name, code and error message.
-- template string for formatting error message.
-- a few helper functions for each registered error:
+- custom errors with name, code and error message.
+- template strings for formatting error messages.
+- helper functions for each registered error:
   - `get<errorName>Error()`
   - `get<errorName>ErrorType()`
   - `rejectWith<errorName>Error()`
@@ -18,6 +18,12 @@ Custom errors for Node.js.
 ```sh
 # Add to project
 $ npm i -S n-custom-errors
+# Run tests
+$ npm test
+# Run lint tool
+$ npm run lint
+# Run coverage tool
+$ npm run coverage
 ```
 
 ### Usage
@@ -29,10 +35,10 @@ customErrors.registerError('DuplicateObject', 409);
 customErrors.registerError('ObjectNotFound', 404, '${objectName} is not found');
 
 // Creating custom errors:
-var objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
-var duplicateObjectError = customErrors.getDuplicateObjectError('The email is not unique');
+let objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
+let duplicateObjectError = customErrors.getDuplicateObjectError('The email is not unique');
 
-console.log(objectNotFoundError1);
+console.log(objectNotFoundError);
 /*
 prints => {
   name: 'ObjectNotFoundError',
@@ -48,8 +54,8 @@ prints => {
 }*/
 
 // Checking that an error is a custom error:
-var err = new Error();
-var objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
+let err = new Error();
+let objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
 customErrors.isObjectNotFoundError(err)); // returns false
 customErrors.isObjectNotFoundError(objectNotFoundError)); // returns true
 
@@ -68,7 +74,6 @@ usersSrvc
     }
   });
 ```
-
 
 ### API
 
@@ -106,10 +111,8 @@ Gets a custom error type.
 
   - `err` - error object, **required**.
 
-
 ### Author
 Alexander Mac
 
-
 ### License
-[MIT License](license)
+Licensed under the MIT license.
