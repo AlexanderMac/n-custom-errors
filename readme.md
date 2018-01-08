@@ -10,7 +10,7 @@ Custom errors for Node.js.
 - helper functions for each registered error:
   - `get<errorName>Error()`
   - `get<errorName>ErrorType()`
-  - `rejectWith<errorName>Error()`
+  - `throw<errorName>Error()`
   - `is<errorName>Error()`
 - predefined HTTP errors:
   - `AccessDeniedError`
@@ -98,9 +98,9 @@ Creates a custom error with message `msg`, it can be the parameters object if an
 *This function is added automatically when a new custom error is registered*.<br>
 Gets a custom error type.
 
-- **rejectWith\<errorName\>Error(msg)**<br>
+- **throw\<errorName\>Error(msg)**<br>
 *This function is added automatically when a new custom error is registered*.
-<br>Rejects promise with a custom error and a message.
+<br>Throws a custom error with a message.
 
   - `msg` - an error message, **required**.
 

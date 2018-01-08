@@ -139,20 +139,10 @@ describe('errors', () => {
       });
     });
 
-    describe('rejectWith<name>Error', () => {
-      it('should reject promise with an instance of customError type', (done) => {
-        let actual = customErrors.rejectWithAccessDeniedError({ user: 'user1' });
-        let expected = new (customErrors.__get__('_customErrors')[0].type)('user1 has\'t access to this data');
-
-        Promise
-          .resolve()
-          .then(() => actual)
-          .then(() => done(new Error('Unexpected promise fulfill')))
-          .catch(err => {
-            should(err).eql(expected);
-            done();
-          })
-          .catch(done);
+    describe('throw<name>Error', () => {
+      it('should throw an instance of customError type', () => {
+        let expected = new Error('user1 has\'t access to this data');
+        should(customErrors.throwAccessDeniedError.bind(customErrors, { user: 'user1' })).throw(expected.message);
       });
     });
   });

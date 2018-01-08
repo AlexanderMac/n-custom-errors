@@ -36,6 +36,7 @@ function _createCustomError(name, statusCode) {
     this.name = name + 'Error';
     this.message = msg;
     this.statusCode = statusCode;
+    Error.captureStackTrace(this);
   };
   CustomError.prototype = new Error();
 
@@ -58,9 +59,8 @@ function _createFunctions(name, CustomError, messageTemplate) {
     return new CustomError(msg);
   };
 
-  // TODO: deprecated
-  exports[`rejectWith${name}Error`] = (msg) => {
+  exports[`throw${name}Error`] = (msg) => {
     let err = exports[`get${name}Error`](msg);
-    return Promise.reject(err);
+    throw err;
   };
 }
