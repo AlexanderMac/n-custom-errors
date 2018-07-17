@@ -2,6 +2,7 @@
 Custom errors for Node.js.
 
 [![Build Status](https://travis-ci.org/AlexanderMac/n-custom-errors.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-custom-errors)
+[![Code Coverage](https://codecov.io/gh/AlexanderMac/n-custom-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexanderMac/n-custom-errors)
 [![npm version](https://badge.fury.io/js/n-custom-errors.svg)](https://badge.fury.io/js/n-custom-errors)
 
 ### Features
