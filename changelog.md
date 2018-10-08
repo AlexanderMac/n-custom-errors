@@ -1,3 +1,7 @@
+# <sub>v2.0.1</sub>
+#### _Oct. 8, 2018_
+  * Fix `ObjectNotFound` error message.
+
 # <sub>v2.0.0</sub>
 #### _Jan. 8, 2018_
 
