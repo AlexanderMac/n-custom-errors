@@ -42,7 +42,7 @@ $ npm run coverage
 // Registering errors:
 customErrors.registerError('AccessDenied', 403);
 customErrors.registerError('DuplicateObject', 409);
-customErrors.registerError('ObjectNotFound', 404, '${objectName} is not found');
+customErrors.registerError('ObjectNotFound', 404, '${objectName} not found');
 
 // Creating custom errors:
 let objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
@@ -52,7 +52,7 @@ console.log(objectNotFoundError);
 /*
 prints => {
   name: 'ObjectNotFoundError',
-  message: 'user is not found',
+  message: 'user not found',
   statusCode: 404
 }*/
 console.log(duplicateObjectError);
@@ -82,7 +82,7 @@ Registers a new custom error.
 
   - `name` - error name, **required**, must be an unique. Name must be without `Error` postfix.
   - `statusCode` - http status code for error.
-  - `messageTemplate` - template for a message, must contains parameters in the following format: `${objectName} is not found`. To pass the parameters to the template, parameters must be an object with defined properties: `customErrors.getObjectNotFoundError({ objectName: 'user' })`. If parameters is a string, than this string will be used in an error message without template: `customErrors.getObjectNotFoundError('User with a name user1 is not found, please use another filter')`.
+  - `messageTemplate` - template for a message, must contains parameters in the following format: `${objectName} not found`. To pass the parameters to the template, parameters must be an object with defined properties: `customErrors.getObjectNotFoundError({ objectName: 'user' })`. If parameters is a string, than this string will be used in an error message without template: `customErrors.getObjectNotFoundError('User with a name user1 not found, please use another filter')`.
 
 - **isKnownError(err)**<br>
 Returns `true` if `err` is a registered custom error, `false` otherwise.
