@@ -30,13 +30,13 @@
   },
   "homepage": "https://github.com/AlexanderMac/n-custom-errors#readme",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "eslint": "^5.1.0",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "eslint": "^5.16.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
     "rewire": "^4.0.1",
-    "should": "^13.2.1"
+    "should": "^13.2.3"
   }
 }
