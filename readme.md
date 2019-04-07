@@ -5,7 +5,7 @@ Custom errors for Node.js.
 [![Code Coverage](https://codecov.io/gh/AlexanderMac/n-custom-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexanderMac/n-custom-errors)
 [![npm version](https://badge.fury.io/js/n-custom-errors.svg)](https://badge.fury.io/js/n-custom-errors)
 
-### Features
+## Features
 - custom errors with name, code and error message.
 - template strings for formatting error messages.
 - helper functions for each registered error:
@@ -23,20 +23,14 @@ Custom errors for Node.js.
   - `UnauthorizedRequestError`
   - `UnprocessableRequestError`
 
-### Setting up
+## Setting up
 
 ```sh
 # Add to project
-$ npm i -S n-custom-errors
-# Run tests
-$ npm test
-# Run lint tool
-$ npm run lint
-# Run coverage tool
-$ npm run coverage
+$ npm i n-custom-errors
 ```
 
-### Usage
+## Usage
 
 ```js
 // Registering errors:
@@ -75,7 +69,7 @@ const customErrors = require('n-custom-errors');
 customErrors.predefined.http.register();
 ```
 
-### API
+## API
 
 - **registerError(name, statusCode, messageTemplate)**<br>
 Registers a new custom error.
@@ -114,8 +108,8 @@ Gets a custom error type.
 - **predefined.http.register()**<br>
 <br>Register predefined htpp errors.
 
-### Author
+## Author
 Alexander Mac
 
-### License
+## License
 Licensed under the MIT license.
