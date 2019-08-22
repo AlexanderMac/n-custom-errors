@@ -1,8 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
+const _         = require('lodash');
+const BaseError = require('./base-error');
 
-let _customErrors = [];
+const _customErrors = [];
 
 exports.registerError = (name, statusCode, messageTemplate) => {
   _validate(name);
@@ -32,14 +33,12 @@ function _validate(name) {
 }
 
 function _createCustomError(name, statusCode) {
-  let CustomError = function(msg) {
-    this.name = name + 'Error';
-    this.message = msg;
-    this.statusCode = statusCode;
-    Error.captureStackTrace(this);
-  };
-  CustomError.prototype = new Error();
-
+  class CustomError extends BaseError {
+    constructor(message, details) {
+      super(message, statusCode, details);
+      this.name = name + 'Error';
+    }
+  }
   return CustomError;
 }
 
