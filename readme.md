@@ -11,17 +11,7 @@ Custom errors for Node.js.
 - helper functions for each registered error:
   - `get<errorName>Error()`
   - `get<errorName>ErrorType()`
-  - `throw<errorName>Error()`
   - `is<errorName>Error()`
-- predefined HTTP errors:
-  - `AccessDeniedError`
-  - `BusinessLogicError`
-  - `DbValidationError`
-  - `DuplicateObjectError`
-  - `ObjectNotFoundError`
-  - `ThirdPartyServiceError`
-  - `UnauthorizedRequestError`
-  - `UnprocessableRequestError`
 
 ## Setting up
 
@@ -62,11 +52,6 @@ let err = new Error();
 let objectNotFoundError = customErrors.getObjectNotFoundError({ objectName: 'user' });
 customErrors.isObjectNotFoundError(err)); // returns false
 customErrors.isObjectNotFoundError(objectNotFoundError)); // returns true
-
-// Using predefined HTTP errors
-const customErrors = require('n-custom-errors');
-
-customErrors.predefined.http.register();
 ```
 
 ## API
@@ -93,20 +78,12 @@ Creates a custom error with message `msg`, it can be the parameters object if an
 *This function is added automatically when a new custom error is registered*.<br>
 Gets a custom error type.
 
-- **throw\<errorName\>Error(msg)**<br>
-*This function is added automatically when a new custom error is registered*.
-<br>Throws a custom error with a message.
-
-  - `msg` - an error message, **required**.
-
 - **is\<errorName\>Error(err)**<br>
 *This function is added automatically when a new custom error is registered*.
 <br>Returns `true` if `err` is a custom error, `false` otherwise.
 
   - `err` - error object, **required**.
 
-- **predefined.http.register()**<br>
-<br>Register predefined htpp errors.
 
 ## Author
 Alexander Mac
