@@ -1,11 +1,11 @@
 # <sub>v3.0.0</sub>
-#### _Aug_. 22, 2019_
+#### _Aug. 22, 2019_
   * Create BaseError class, fix stack trace for creating error.
   * Remove predefined errors.
   * Update dependencies to the latest versions.
   
 # <sub>v2.0.2</sub>
-#### _Apr_. 6, 2019_
+#### _Apr. 6, 2019_
   * Update dependencies to the latest versions.
 
 # <sub>v2.0.1</sub>
