@@ -3,7 +3,8 @@
   * Create BaseError class, fix stack trace for creating error.
   * Remove predefined errors.
   * Update dependencies to the latest versions.
-  
+  * Drop support for Node v6.
+
 # <sub>v2.0.2</sub>
 #### _Apr. 6, 2019_
   * Update dependencies to the latest versions.
