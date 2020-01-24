@@ -1,7 +1,5 @@
-'use strict';
-
-const should       = require('should');
-const rewire       = require('rewire');
+const should = require('should');
+const rewire = require('rewire');
 const customErrors = rewire('../src/custom-errors');
 
 should.config.checkProtoEql = false;
@@ -12,15 +10,15 @@ describe('errors', () => {
     customErrors.__set__('_customErrors', []);
   });
 
-  describe('registerError',() => {
+  describe('registerError', () => {
     function test1(name, code, template, expectedErrors) {
       customErrors.registerError(name, code, template);
 
       let actualErrors = customErrors.__get__('_customErrors');
       should(actualErrors).eql(expectedErrors);
 
-      let actualError = new (actualErrors[0].type)('Test');
-      let expectedError = new (expectedErrors[0].type)('Test');
+      let actualError = new actualErrors[0].type('Test');
+      let expectedError = new expectedErrors[0].type('Test');
       should(actualError).eql(expectedError);
     }
 

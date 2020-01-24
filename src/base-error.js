@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = class BaseError extends Error {
   constructor(message, statusCode, details) {
     super(message);
