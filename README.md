@@ -5,7 +5,7 @@ Custom errors for Node.js.
 [![Code Coverage](https://codecov.io/gh/AlexanderMac/n-custom-errors/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexanderMac/n-custom-errors)
 [![npm version](https://badge.fury.io/js/n-custom-errors.svg)](https://badge.fury.io/js/n-custom-errors)
 
-## Features
+### Features
 - custom errors with name, code and error message.
 - template strings for formatting error messages.
 - helper functions for each registered error:
@@ -13,15 +13,12 @@ Custom errors for Node.js.
   - `get<errorName>ErrorType()`
   - `is<errorName>Error()`
 
-## Setting up
-
-```sh
-# Add to project
+### Install
+```bash
 $ npm i n-custom-errors
 ```
 
-## Usage
-
+### Usage
 ```js
 // Registering errors:
 customErrors.registerError('AccessDenied', 403);
@@ -54,7 +51,7 @@ customErrors.isObjectNotFoundError(err)); // returns false
 customErrors.isObjectNotFoundError(objectNotFoundError)); // returns true
 ```
 
-## API
+### API
 
 - **registerError(name, statusCode, messageTemplate)**<br>
 Registers a new custom error.
@@ -84,9 +81,8 @@ Gets a custom error type.
 
   - `err` - error object, **required**.
 
-
-## Author
-Alexander Mac
-
-## License
+### License
 Licensed under the MIT license.
+
+### Author
+Alexander Mac
