@@ -1,4 +1,5 @@
 # n-custom-errors
+## WARNING :warning:: This repo is not maintained anymore.
 Custom errors for Node.js.
 
 [![Build Status](https://github.com/AlexanderMac/n-custom-errors/workflows/CI/badge.svg)](https://github.com/AlexanderMac/n-custom-errors/actions?query=workflow%3ACI)
